@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body class="pagina-contacto">
+    <header class="header-contacto">
+        <a href="/index.html"><img class="logo-left" src="/media/imagenes/Logo.png" alt="Logo de la web"></a>
+        <h1>Comunicate con nosotros</h1>
+    </header>
+    <nav id="menu-header">
+        <ul class="menu">
+            <li><a href="/index.html"><strong>Inicio</strong></a></li>
+            <li><a href="#"><strong>Productos</strong></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <form action="https://formspree.io/f/xandvgrk" method="POST">
+            <fieldset>
+                <legend class="Informacion-personal">Informacion Personal</legend> <!-- Crear clase para la info personal -->
+                <label width="300">Nombre:
+                <input type="text" placeholder="Nombre completo" required>
+                </label><br>
+                <label>Edad: 
+                    <input type="edad" placeholder="Edad" required>
+                </label><br>
+                <label>Email:
+                    <input type="email" placeholder="Correo electronico" required>
+                </label><br>
+            </fieldset>
+            <fieldset>
+                <legend>Motivo del Mensaje</legend>
+                <label>Mensaje:
+                <textarea name="mensaje" required></textarea>
+                </label><br>
+                <label>Archivo:
+                <input type="file">
+                </label><br>
+            </fieldset>
+            <section>
+                <button type="submit">Enviar</button>
+            </section>
+        </form><br>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Contactos</h3>
+                <ul>
+                    <a href="http://wa.me/+541134133665" target="_blank" title="Whatsapp">
+                        <i class="fi fi-brands-whatsapp"></i> Whatsapp
+                    </a><br>
+                    <a href="mailto:reparacionescyl828@gmail.com" target="_blank">
+                        <i class="fi fi-rr-envelope"></i> Correo
+                    </a>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Empresa</h3>
+                <ul>
+                    <li><a href="/pages/sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="/pages/sucursales.html">Sucursales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Servicio al cliente</h3>
+                <ul>
+                    <li><a href="/pages/centro-ayuda.html">Centro de ayuda</a></li>
+                    <li><a href="/pages/terminos.html">Términos y condiciones</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© Mi sitio web 2025. Derechos reservados</p>
+    </footer>
+</body>
+</html>
