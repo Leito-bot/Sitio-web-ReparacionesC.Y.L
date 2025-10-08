@@ -1,14 +1,18 @@
 /* ====== ESTILOS GENERALES ====== */
-body {
+body{
   background-color: ghostwhite;
   font-family: Arial, sans-serif;
   margin: 5px;
   padding: 5px;
 }
 
+h1{
+  font-size: calmp(1.5rem, 5vw, 3rem);
+}
+
 h3 {
   margin-bottom: 15px;
-  font-size: 18px;
+  font-size: calmp(1.5rem, 5vw, 3rem);
 }
 
 /* Solo para la pagina de centro de ayuda */
@@ -194,6 +198,8 @@ header {
 
 
 .producto {
+  display: grid;
+  grid-template-columns: 1fr;
   border-bottom: 1px solid #ccc;
   padding-bottom: 20px;
   transition: transform 0.3s ease;
@@ -270,3 +276,11 @@ header {
   width: 100%;
   border-radius: 10px;
 }
+
+@media screen and (min-width: 400px) and (max-width: 600px){
+  body{
+    background-color: ghostwhite;
+    font-family: Arial, sans-serif;
+  }
+}
+
