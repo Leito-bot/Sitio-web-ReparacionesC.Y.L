@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+
+    <link rel="stylesheet" href="../css/style_login.css">
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- =============== LOGIN (Izquierda) =============== -->
+        <div class="left">
+            <form>
+                <h2>Iniciar Sesion</h2>
+
+                <div class="redes-sociales">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </div>
+
+                <span>Use su correo y contraseña</span>
+
+                <div class="container-input">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" id="id_email" placeholder="Email">
+                </div>
+                <p id="empty_email-error" class="error"></p>
+
+                <div class="container-input">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" id="id_password" placeholder="Password">
+                </div>
+                <p id="empty_psw-error" class="error"></p>
+
+                <p id="login_error-error" class="error"></p>
+
+                <a href="#">¿Olvidaste tu contraseña?</a>
+
+                <button class="button" id="btn_login">Iniciar Sesion</button>
+
+            </form>
+        </div>
+
+        <!-- =============== PANEL VERDE (Derecha) =============== -->
+        <div class="right">
+            <h3>¡Bienvenidos!</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, totam!</p>
+            <button id="btn-sign-up" class="button-outline">Registrarse</button>
+        </div>
+
+    </div>
+
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>

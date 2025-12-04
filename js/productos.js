@@ -1,0 +1,175 @@
+// 1. LISTADO DE PRODUCTOS TECNOLÓGICOS (Datos reales)
+let productos = [
+  {
+    "id": 1,
+    "image": "/Pre-entrega/media/imagenes/Cargador Samsung 45w.jpeg",
+    "name": "Cargador Samsung 45w ORIGINAL",
+    "price": 45000,
+    "category": "Cargadores",
+    "description": "Super Fast Charging 2.0 con protección de sobrecarga."
+  },
+  {
+    "id": 2,
+    "image": "/Pre-entrega/media/imagenes/Cargador Motorola 68w ORIGINAL.png",
+    "name": "Cargador Motorola 68w ORIGINAL",
+    "price": 55000,
+    "category": "Cargadores",
+    "description": "Carga TurboPower para máxima velocidad."
+  },
+  {
+    "id": 3,
+    "image": "/Pre-entrega/media/imagenes/Fundas.png",
+    "name": "Fundas para tu celular",
+    "price": 15000,
+    "category": "Fundas",
+    "description": "Protección y estilo para todos los modelos."
+  },
+  {
+    "id": 4,
+    "image": "/Pre-entrega/media/imagenes/Templados 9D.png",
+    "name": "Vidrio Templado 9D",
+    "price": 5000,
+    "category": "Vidrios Templados",
+    "description": "Máxima resistencia contra golpes y rayas."
+  },
+  {
+    "id": 5,
+    "image": "/Pre-entrega/media/imagenes/Cables USB Samsung y Motorola.png",
+    "name": "Cable USB Tipo-C",
+    "price": 8000,
+    "category": "Cables USB",
+    "description": "Transferencia de datos y carga rápida."
+  },
+  {
+    "id": 6,
+    "image": "/Pre-entrega/media/imagenes/Auriculares Samsung -Manos Libres.png",
+    "name": "Auriculares Samsung",
+    "price": 12000,
+    "category": "Auriculares",
+    "description": "Manos libres con sonido de alta fidelidad."
+  },
+  {
+    "id":7,
+    "image": "/Pre-entrega/media/imagenes/PowerBank.jpg",
+    "name": "Power Bank",
+    "price": 30000,
+    "category": "Baterias",
+    "description": "2000mAh mas 2 cables usb"
+  }
+];
+
+// Seleccionamos el contenedor
+let productosContainer = document.getElementById('productos-container');
+
+// FUNCIÓN PARA CARGAR PRODUCTOS
+function loadProducts() {
+  // Limpiamos el contenedor por si acaso
+  if(!productosContainer) return; 
+  productosContainer.innerHTML = "";
+
+  productos.forEach(producto => {
+    // Preparamos el objeto para pasar a la función del carrito
+    let objToPass = JSON.stringify(producto).replace(/"/g, '&quot;');
+
+    // Creamos el HTML usando LAS MISMAS CLASES que tu index.html
+    // Usamos 'producto', 'imagen-container', 'info-producto'
+    let cardHTML = `
+      <div class="producto">
+          <div class="imagen-container">
+              <img src="${producto.image}" alt="${producto.name}">
+          </div>
+          <div class="info-producto">
+              <p class="categoria">${producto.category}</p>
+              <h3>${producto.name}</h3>
+              <p class="descripcion-corta">${producto.description}</p>
+              <div class="precio-container">
+                  <span class="precio">$${producto.price.toLocaleString()}</span>
+                  <button class="btn-comprar" onclick='addWishList(${objToPass})'>
+                    Agregar 🛒
+                  </button>
+              </div>
+          </div>
+      </div>
+    `;
+    
+    productosContainer.innerHTML += cardHTML;
+  });
+}
+
+// LOGICA DEL CARRITO / FAVORITOS
+function addWishList(data) {
+  const prodToAdd = {
+    "id": data.id,
+    "favId": Date.now(),
+    "price": data.price,
+    "name": data.name,
+    "image": data.image
+  };
+  
+  if (typeof(Storage) !== "undefined") {
+    localStorage.setItem(prodToAdd.favId, JSON.stringify(prodToAdd));
+    // Actualizamos visualmente sin recargar toda la página si es posible
+    renderFavourites(); 
+    alert("¡Producto agregado al carrito!");
+  }
+}
+
+// CARGAR FAVORITOS (SECCIÓN SUPERIOR)
+let seccionFavs = document.getElementById("seccion_favs");
+let contenedorFavoritos = document.getElementById('lista-favoritos'); // Nuevo ID
+let totalFavoritos = document.getElementById('item_cantidad');
+let precioTotal = document.getElementById('precio_total');
+
+function renderFavourites() {
+  if(!contenedorFavoritos) return;
+  
+  contenedorFavoritos.innerHTML = ""; // Limpiar antes de pintar
+  let totalPrice = 0;
+  let count = localStorage.length;
+
+  if (count > 0) {
+    seccionFavs.style.display = "block";
+    totalFavoritos.innerText = count;
+  } else {
+    seccionFavs.style.display = "none";
+  }
+
+  Object.keys(localStorage).forEach(function(key) {
+    let item = JSON.parse(localStorage.getItem(key));
+    totalPrice += item.price;
+    
+    contenedorFavoritos.innerHTML += `
+          <div class="card-fav">
+            <img src="${item.image}" style="width:50px; height:50px; object-fit:cover;">
+            <div class="datos-fav">
+                <h5>${item.name}</h5>
+                <span class="precio-fav">$${item.price.toLocaleString()}</span>
+            </div>
+            <button onclick="eliminar(${item.favId})" class="btn-del">❌</button>
+          </div>
+      `;
+  });
+  
+  if(precioTotal) {
+      precioTotal.innerText = `Total: $${totalPrice.toLocaleString()}`;
+  }
+}
+
+function eliminar(id) {
+  localStorage.removeItem(id.toString());
+  renderFavourites();
+}
+
+const btnDeleteAll = document.getElementById('delete_all');
+if(btnDeleteAll){
+    btnDeleteAll.addEventListener('click', () => {
+        localStorage.clear();
+        renderFavourites();
+    });
+}
+
+// INICIALIZACIÓN
+document.addEventListener("DOMContentLoaded", () => {
+    loadProducts();
+    renderFavourites();
+});

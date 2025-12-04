@@ -1,286 +1,329 @@
-/* ====== ESTILOS GENERALES ====== */
-body{
-  background-color: ghostwhite;
-  font-family: Arial, sans-serif;
-  margin: 5px;
-  padding: 5px;
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+
+/* ========== Variables Globales (Para cambiar colores fácil) ========== */
+:root {
+  --primary-color: #040a7a;
+  --accent-color: #00ffcc;
+  --bg-color: #f4f6f9;
+  --text-dark: #333;
+  --text-light: #777;
+  --white: #ffffff;
+  --shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-h1{
-  font-size: calmp(1.5rem, 5vw, 3rem);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Assistant', sans-serif;
 }
 
-h3 {
-  margin-bottom: 15px;
-  font-size: calmp(1.5rem, 5vw, 3rem);
+body {
+  background-color: var(--bg-color);
+  font-family: 'Assistant', sans-serif;
+  color: var(--text-dark);
 }
 
-/* Solo para la pagina de centro de ayuda */
-.header-contacto {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
+/* ========== Header ========== */
+header {
+  background-color: var(--white);
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.header-contacto .logo-left {
-  justify-self: start;
-}
-
-.header-contacto h1 {
+.logo-container {
   text-align: center;
+}
+
+.logo-img {
+  max-width: 250px; /* Tamaño controlado */
+  height: auto;
+  display: block;
   margin: 0 auto;
 }
-/*=====================================================================*/
 
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
-
-#logo {
-  width: 300px;
-  height: auto;
-  align-items: center;
-}
-
-.logo-left{
-  justify-content: start;
-  width: 200px;
-  right: 100px;
-}
-
-#menu-header {
-  background-color: #040a7a;
-  margin: 0;
-  padding: 10px;
-  flex-grow: 1;
+/* ========== Nav ========== */
+.menu-header {
+  background-color: var(--primary-color);
+  padding: 15px 0;
+  position: sticky; /* El menú se queda pegado arriba al bajar */
+  top: 0;
+  z-index: 1000;
 }
 
 .menu {
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .menu a {
   text-decoration: none;
-  color: white;
-  font-weight: 500;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .menu a:hover {
-  color: #00ffcc;
-  padding-bottom: 3px;
+  color: var(--accent-color);
 }
 
-/* ====== ICONO NOTICIAS FLOTANTE ====== */
+/* ========== Tipografía Global ========== */
+h1{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.parrafos{
+  margin-bottom: 15px;
+}
+
+/* ========== Productos ========== */
+.productos-destacados {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.productos-destacados h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  display: inline-block;
+  width: 100%;
+}
+
+/* --- GRID SYSTEM (La parte más importante) --- */
+.productos-grid {
+  display: grid;
+  /* Esto crea columnas automáticas. Minimo 280px, maximo 1 fracción */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* --- Tarjeta de Producto --- */
+.producto {
+  background-color: var(--white);
+  border-radius: 12px;
+  overflow: hidden; /* Para que la imagen no se salga del borde redondeado */
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Alinea contenido verticalmente */
+  height: 100%; /* Para que todas las tarjetas midan lo mismo */
+}
+
+.producto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(4, 10, 122, 0.2);
+}
+
+.imagen-container {
+  width: 100%;
+  height: 220px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+}
+
+.producto img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Mantiene la proporción de la imagen */
+}
+
+.info-producto {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Ocupa el espacio restante */
+}
+
+.categoria {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+
+.producto h3 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.descripcion-corta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+  flex-grow: 1; /* Empuja el precio hacia abajo para alinear botones */
+}
+
+.precio-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.precio {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.btn-mas {
+  background-color: var(--primary-color);
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background 0.3s;
+}
+
+.btn-mas:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+/* ========== Icono Noticias Flotante ========== */
+.icononews {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 999;
+  background-color: #03DFFC;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+.icononews:hover {
+  transform: scale(1.1);
+}
+
 #icono-noticias {
   width: 30px;
   height: 30px;
+  filter: invert(1); /* Vuelve blanco el icono si es negro */
+}
+/* ========== Formulario de ayuda ========== */
+.fieldset{
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
 }
 
-.icononews {
-  position: fixed;
-  left: 15px;
-  bottom: 12px;
-  z-index: 9999;
-  background-color: #040a7a;
-  border-radius: 33px;
-  padding: 15px;
+.titulo-campos{
+  color: var(--primary-color);
+  font-weight: bold;
+  padding: 0 10px;
 }
-/*=====================================================================*/
 
-/* ====== FOOTER ====== */
-.footer {
-  background-color: #040a7a;
+.form-enviar{
+  background-color: var(--primary-color);
   color: white;
-  padding: 40px 20px;
-  margin-top: 40px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* ========== Footer ========== */
+.footer {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 60px 20px 20px;
+  margin-top: 60px;
 }
 
 .footer-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-  gap: 40px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .footer-col h3 {
-  margin-bottom: 15px;
-  font-size: 18px;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 5px;
+  display: inline-block;
 }
 
 .footer-col ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .footer-col ul li {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .footer-col a {
-  color: white;
+  color: #ccc;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
+  font-size: 0.95rem;
 }
 
 .footer-col a:hover {
-  color: #00ffcc;
+  color: var(--accent-color);
+  padding-left: 5px; /* Efecto de desplazamiento */
 }
 
-/* ====== COPYRIGHT ====== */
 .copyright {
   text-align: center;
-  margin-top: 30px;
-  font-size: 14px;
-  opacity: 0.8;
-  width: 100%;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
 
-/* Solo para la pagina sobre-nosotros */
-.about {
-  padding: 60px 20px;
-  background-color: #f9f9f9;
-  color: #333;
-}
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .menu {
+    gap: 15px;
+    font-size: 0.9rem;
+  }
+  
+  .logo-img {
+    width: 200px;
+  }
 
-.about-container {
-  max-width: 1000px;
-  margin: auto;
-  text-align: center;
-}
-
-.about h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #040a7a;
-}
-
-.about p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-/* Seccion de Productos */
-.productos-destacados {
-  max-width: 1200px;
-  margin: 50px auto;
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-.productos-destacados h2 {
-  font-size: 24px;
-  margin-bottom: 30px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 15px;
-}
-
-.productos-destacados .hot {
-  color: #040a7a; 
-  font-weight: bold;
-}
-
-.productos-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-}
-
-
-.producto {
-  display: grid;
-  grid-template-columns: 1fr;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 20px;
-  transition: transform 0.3s ease;
-}
-
-.producto:hover {
-  transform: translateY(-5px);
-}
-
-.producto img {
-  max-width: 100%;
-  height: 200px;
-}
-
-.producto .categoria {
-  font-size: 12px;
-  color: gray;
-  margin: 10px 0 5px;
-  text-transform: uppercase;
-}
-
-.producto h3 {
-  font-size: 16px;
-  color: #040a7a;
-  margin: 5px 0 15px;
-}
-
-
-.btn-mas {
-  background-color: white;
-  border: 2px solid #040a7a;
-  color: #040a7a;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-mas:hover {
-  background-color: #040a7a;
-  color: white;
-}
-
-
-
-
-/* Solo para la pagina sucursales */
-.sucursales {
-  padding: 60px 20px;
-  background-color: #f9f9f9;
-  text-align: center;
-}
-
-.sucursales h1 {
-  font-size: 28px;
-  margin-bottom: 30px;
-  color: #040a7a;
-}
-
-.map-container {
-  margin-bottom: 40px;
-}
-
-.map-container h3 {
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: #333;
-}
-
-.map-container iframe {
-  max-width: 800px;
-  width: 100%;
-  border-radius: 10px;
-}
-
-@media screen and (min-width: 400px) and (max-width: 600px){
-  body{
-    background-color: ghostwhite;
-    font-family: Arial, sans-serif;
+  .productos-grid {
+    gap: 15px;
+  }
+  
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
   }
 }
-

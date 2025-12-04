@@ -3,47 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nosotros - Reparaciones C.Y.L</title>
+    <title>💻 Productos - Reparaciones C.Y.L</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/productos.css"> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css">
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <a href="../index.html"><img class="logo-img" src="../media/imagenes/Logo.png" alt="Logo"></a>
+            <a href="/Pre-entrega/index.html">
+                <img class="logo-img" src="/Pre-entrega/media/imagenes/Logo.png" alt="Logo Reparaciones C.Y.L">
+            </a>
         </div>
     </header>
-    
     <nav class="menu-header">
         <ul class="menu">
             <li><a href="../index.html">Inicio</a></li>
-            <li><a href="noticias.html">Noticias</a></li>
-            <li><a href="sucursales.html">Sucursales</a></li>
+            <li><a href="/Pre-entrega/pages/productos.html">Productos</a></li>
+            <li><a href="/Pre-entrega/pages/noticias.html">Noticias</a></li>
+            <li><a href="#" onclick="cerrarSesion()">Salir 🚪</a></li>
         </ul>
     </nav>
-
+    
     <main>
-        <section class="about">
-            <div class="about-container">
-                <h1>Nuestra Historia</h1>
-                
-                <div>
-                    <p class="parrafos">
-                        En <strong>Reparaciones C.Y.L</strong> nos especializamos desde enero de 2019 
-                        en la reparación integral de dispositivos móviles y computadoras.
-                        Nuestra pasión por la tecnología nos impulsa a ofrecer soluciones efectivas para 
-                        <strong>celulares, tablets, notebooks y netbooks</strong>.
-                    </p>
-                    <p class="parrafos">
-                        Nuestro compromiso es brindar un <strong>servicio rápido, confiable y de calidad</strong>. 
-                        Entendemos que tu dispositivo es esencial para tu vida diaria, por eso utilizamos 
-                        repuestos de alta calidad y herramientas de precisión para garantizar cada reparación.
-                    </p>
-                    <p class="parrafos">
-                        A lo largo de estos años, nos hemos consolidado como referentes en la zona, 
-                        destacándonos por nuestra <strong>atención personalizada</strong> y honestidad en cada diagnóstico.
-                    </p>
+        <section id="seccion_favs" class="seccion-favs" style="display: none;">
+            <div class="header-favs">
+                <h2>Tu Carrito <span id="item_cantidad">0</span></h2>
+                <button id="delete_all" class="btn-vaciar">Vaciar Todo</button>
+            </div>
+            
+            <div id="lista-favoritos" class="contenedor-favoritos">
                 </div>
+            
+            <div id="precio_total" class="precio-total">Total: $0</div>
+        </section>
+
+        <section class="productos-destacados">
+            <h2><span class="hot">Catálogo Completo</span></h2>
+            
+            <div id="productos-container" class="productos-grid">
             </div>
         </section>
     </main>
@@ -75,12 +73,14 @@
             <div class="footer-col">
                 <h3>Servicio al cliente</h3>
                 <ul>
-                    <li><a href="/Pre-entrega/pages/centro-ayuda.html">Centro de ayuda</a></li>
-                    <li><a href="/Pre-entrega/pages/terminos.html">Términos y condiciones</a></li>
+                    <li><a href="/Pre-entrega/pages/pages/centro-ayuda.html">Centro de ayuda</a></li>
+                    <li><a href="/Pre-entrega/pages/pages/terminos.html">Términos y condiciones</a></li>
                 </ul>
             </div>
         </div>
         <p class="copyright">© 2025 Reparaciones C.Y.L - Todos los derechos reservados</p>
     </footer>
+
+    <script src="../js/productos.js"></script>
 </body>
 </html>

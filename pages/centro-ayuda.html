@@ -1,52 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
+    <title>Centro de Ayuda - Reparaciones C.Y.L</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css">
 </head>
-<body class="pagina-contacto">
-    <header class="header-contacto">
-        <a href="../index.html"><img class="logo-left" src="../media/imagenes/Logo.png" alt="Logo de la web"></a>
-        <h1>Comunicate con nosotros</h1>
+<body>
+    
+  <header>
+        <div class="logo-container">
+            <a href="../index.html">
+                <img class="logo-img" src="../media/imagenes/Logo.png" alt="Logo Reparaciones C.Y.L">
+            </a>
+        </div>
     </header>
-    <nav id="menu-header">
+    <nav class="menu-header">
         <ul class="menu">
-            <li><a href="../index.html"><strong>Inicio</strong></a></li>
-            <li><a href="#"><strong>Productos</strong></a></li>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../pages/productos.html">Productos</a></li>
+            <li><a href="../pages/noticias.html">Noticias</a></li>
+            <li><a href="#" onclick="cerrarSesion()">Salir 🚪</a></li>
         </ul>
     </nav>
-
     <main>
-        <form action="https://formspree.io/f/xandvgrk" method="POST">
-            <fieldset>
-                <legend class="Informacion-personal">Informacion Personal</legend> <!-- Crear clase para la info personal -->
-                <label width="300">Nombre:
-                <input type="text" placeholder="Nombre completo" required>
-                </label><br>
-                <label>Edad: 
-                    <input type="edad" placeholder="Edad" required>
-                </label><br>
-                <label>Email:
-                    <input type="email" placeholder="Correo electronico" required>
-                </label><br>
-            </fieldset>
-            <fieldset>
-                <legend>Motivo del Mensaje</legend>
-                <label>Mensaje:
-                <textarea name="mensaje" required></textarea>
-                </label><br>
-                <label>Archivo:
-                <input type="file">
-                </label><br>
-            </fieldset>
-            <section>
-                <button type="submit">Enviar</button>
-            </section>
-        </form><br>
+        <section class="form-section" style="max-width: 600px; margin: 40px auto; padding: 20px;">
+            <h1 style="text-align: center; color: var(--primary-color);">Comunicate con nosotros</h1>
+            
+            <form action="https://formspree.io/f/xandvgrk" method="POST" class="formulario-contacto">
+                <fieldset class="fieldset">
+                    <legend class="titulo-campos">Información Personal</legend>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required style="width: 100%; padding: 8px;">
+                    </div>
 
+                    <div style="margin-bottom: 15px;">
+                        <label for="edad">Edad:</label>
+                        <input type="number" id="edad" name="edad" placeholder="Edad" required style="width: 100%; padding: 8px;">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required style="width: 100%; padding: 8px;">
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend class="titulo-campos">Motivo del Mensaje</legend>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" required style="width: 100%; padding: 8px;" rows="5"></textarea>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label for="archivo">Adjuntar Archivo (Opcional):</label><br>
+                        <input type="file" id="archivo" name="archivo" style="margin-top: 5px;">
+                    </div>
+                </fieldset>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <button type="submit" class="form-enviar">Enviar Mensaje</button>
+                </div>
+            </form>
+        </section>
     </main>
 
     <footer class="footer">
@@ -54,30 +74,34 @@
             <div class="footer-col">
                 <h3>Contactos</h3>
                 <ul>
-                    <a href="http://wa.me/+541134133665" target="_blank" title="Whatsapp">
-                        <i class="fi fi-brands-whatsapp"></i> Whatsapp
-                    </a><br>
-                    <a href="mailto:reparacionescyl828@gmail.com" target="_blank">
-                        <i class="fi fi-rr-envelope"></i> Correo
-                    </a>
+                    <li>
+                        <a href="http://wa.me/+541134133665" target="_blank" title="Whatsapp">
+                            <i class="fi fi-brands-whatsapp"></i> Whatsapp
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:reparacionescyl828@gmail.com" target="_blank">
+                            <i class="fi fi-rr-envelope"></i> Correo
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h3>Empresa</h3>
                 <ul>
-                    <li><a href="../pages/sobre-nosotros.html">Sobre nosotros</a></li>
-                    <li><a href="../pages/sucursales.html">Sucursales</a></li>
+                    <li><a href="/Pre-entrega/pages/sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="/Pre-entrega/pages/sucursales.html">Sucursales</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h3>Servicio al cliente</h3>
                 <ul>
-                    <li><a href="../pages/centro-ayuda.html">Centro de ayuda</a></li>
-                    <li><a href="../pages/terminos.html">Términos y condiciones</a></li>
+                    <li><a href="/Pre-entrega/pages/centro-ayuda.html">Centro de ayuda</a></li>
+                    <li><a href="/Pre-entrega/pages/terminos.html">Términos y condiciones</a></li>
                 </ul>
             </div>
         </div>
-        <p class="copyright">© Mi sitio web 2025. Derechos reservados</p>
+        <p class="copyright">© 2025 Reparaciones C.Y.L - Todos los derechos reservados</p>
     </footer>
 </body>
 </html>

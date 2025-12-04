@@ -1,0 +1,87 @@
+/* productos.css - Solo estilos específicos adicionales */
+
+/* Estilos para la sección del Carrito/Favoritos */
+.seccion-favs {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.header-favs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.contenedor-favoritos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.card-fav {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 300px; /* Tamaño fijo para las cards del carrito */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.datos-fav h5 {
+    font-size: 14px;
+    margin: 0 0 5px 0;
+}
+
+.precio-fav {
+    color: green;
+    font-weight: bold;
+}
+
+.btn-del {
+    margin-left: auto; /* Empuja el botón a la derecha */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.btn-vaciar {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.precio-total {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Estilo para el botón de comprar generado por JS */
+.btn-comprar {
+    background-color: #2ecc71; /* Un verde similar a tu estilo */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-comprar:hover {
+    background-color: #27ae60;
+}
