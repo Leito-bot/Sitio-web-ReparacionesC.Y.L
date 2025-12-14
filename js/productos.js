@@ -1,8 +1,11 @@
-// 1. LISTADO DE PRODUCTOS TECNOLÓGICOS (Datos reales)
+// 1. LISTADO DE PRODUCTOS TECNOLÓGICOS
+// NOTA IMPORTANTE: Asegúrate de que los nombres de archivo en tu carpeta 
+// sean EXACTAMENTE iguales (mayúsculas, espacios y extensión .jpg/.png)
+
 let productos = [
   {
     "id": 1,
-    "image": "/Pre-entrega/media/imagenes/Cargador Samsung 45w.jpeg",
+    "image": "media/imagenes/Cargador Samsung 45w.jpeg", 
     "name": "Cargador Samsung 45w ORIGINAL",
     "price": 45000,
     "category": "Cargadores",
@@ -10,7 +13,7 @@ let productos = [
   },
   {
     "id": 2,
-    "image": "/Pre-entrega/media/imagenes/Cargador Motorola 68w ORIGINAL.png",
+    "image": "media/imagenes/Cargador Motorola 68w ORIGINAL.png", 
     "name": "Cargador Motorola 68w ORIGINAL",
     "price": 55000,
     "category": "Cargadores",
@@ -18,7 +21,7 @@ let productos = [
   },
   {
     "id": 3,
-    "image": "/Pre-entrega/media/imagenes/Fundas.png",
+    "image": "media/imagenes/Fundas.png",
     "name": "Fundas para tu celular",
     "price": 15000,
     "category": "Fundas",
@@ -26,7 +29,7 @@ let productos = [
   },
   {
     "id": 4,
-    "image": "/Pre-entrega/media/imagenes/Templados 9D.png",
+    "image": "media/imagenes/Templados 9D.png",
     "name": "Vidrio Templado 9D",
     "price": 5000,
     "category": "Vidrios Templados",
@@ -34,7 +37,7 @@ let productos = [
   },
   {
     "id": 5,
-    "image": "/Pre-entrega/media/imagenes/Cables USB Samsung y Motorola.png",
+    "image": "media/imagenes/Cables USB Samsung y Motorola.png",
     "name": "Cable USB Tipo-C",
     "price": 8000,
     "category": "Cables USB",
@@ -42,15 +45,15 @@ let productos = [
   },
   {
     "id": 6,
-    "image": "/Pre-entrega/media/imagenes/Auriculares Samsung -Manos Libres.png",
+    "image": "media/imagenes/Auriculares Samsung -Manos Libres.png",
     "name": "Auriculares Samsung",
     "price": 12000,
     "category": "Auriculares",
     "description": "Manos libres con sonido de alta fidelidad."
   },
   {
-    "id":7,
-    "image": "/Pre-entrega/media/imagenes/PowerBank.jpg",
+    "id": 7,
+    "image": "media/imagenes/PowerBank.jpg", 
     "name": "Power Bank",
     "price": 30000,
     "category": "Baterias",
@@ -63,20 +66,17 @@ let productosContainer = document.getElementById('productos-container');
 
 // FUNCIÓN PARA CARGAR PRODUCTOS
 function loadProducts() {
-  // Limpiamos el contenedor por si acaso
   if(!productosContainer) return; 
   productosContainer.innerHTML = "";
 
   productos.forEach(producto => {
-    // Preparamos el objeto para pasar a la función del carrito
+    // Escapamos las comillas para evitar errores en el JSON al pasar al HTML
     let objToPass = JSON.stringify(producto).replace(/"/g, '&quot;');
 
-    // Creamos el HTML usando LAS MISMAS CLASES que tu index.html
-    // Usamos 'producto', 'imagen-container', 'info-producto'
     let cardHTML = `
       <div class="producto">
           <div class="imagen-container">
-              <img src="${producto.image}" alt="${producto.name}">
+              <img src="${producto.image}" alt="${producto.name}" onerror="this.src='media/imagenes/Logo.png'">
           </div>
           <div class="info-producto">
               <p class="categoria">${producto.category}</p>
@@ -108,7 +108,6 @@ function addWishList(data) {
   
   if (typeof(Storage) !== "undefined") {
     localStorage.setItem(prodToAdd.favId, JSON.stringify(prodToAdd));
-    // Actualizamos visualmente sin recargar toda la página si es posible
     renderFavourites(); 
     alert("¡Producto agregado al carrito!");
   }
@@ -116,38 +115,55 @@ function addWishList(data) {
 
 // CARGAR FAVORITOS (SECCIÓN SUPERIOR)
 let seccionFavs = document.getElementById("seccion_favs");
-let contenedorFavoritos = document.getElementById('lista-favoritos'); // Nuevo ID
+let contenedorFavoritos = document.getElementById('lista-favoritos');
 let totalFavoritos = document.getElementById('item_cantidad');
 let precioTotal = document.getElementById('precio_total');
 
 function renderFavourites() {
   if(!contenedorFavoritos) return;
   
-  contenedorFavoritos.innerHTML = ""; // Limpiar antes de pintar
+  contenedorFavoritos.innerHTML = ""; 
   let totalPrice = 0;
   let count = localStorage.length;
 
-  if (count > 0) {
-    seccionFavs.style.display = "block";
-    totalFavoritos.innerText = count;
-  } else {
-    seccionFavs.style.display = "none";
+  // Verificamos si los elementos existen antes de intentar modificar su estilo
+  if (seccionFavs) {
+      if (count > 0) {
+        seccionFavs.style.display = "block";
+      } else {
+        seccionFavs.style.display = "none";
+      }
   }
 
+  if (totalFavoritos) {
+      totalFavoritos.innerText = count;
+  }
+
+  // Recorremos el localStorage, pero filtramos solo nuestras claves
   Object.keys(localStorage).forEach(function(key) {
-    let item = JSON.parse(localStorage.getItem(key));
-    totalPrice += item.price;
-    
-    contenedorFavoritos.innerHTML += `
-          <div class="card-fav">
-            <img src="${item.image}" style="width:50px; height:50px; object-fit:cover;">
-            <div class="datos-fav">
-                <h5>${item.name}</h5>
-                <span class="precio-fav">$${item.price.toLocaleString()}</span>
-            </div>
-            <button onclick="eliminar(${item.favId})" class="btn-del">❌</button>
-          </div>
-      `;
+    // Evitamos leer la clave 'usuarioLogueado' como si fuera un producto
+    if(key === 'usuarioLogueado') return;
+
+    try {
+        let item = JSON.parse(localStorage.getItem(key));
+        // Verificamos que sea un objeto de producto válido antes de sumar
+        if(item && item.price){
+            totalPrice += item.price;
+            
+            contenedorFavoritos.innerHTML += `
+                  <div class="card-fav">
+                    <img src="${item.image}" style="width:50px; height:50px; object-fit:cover;">
+                    <div class="datos-fav">
+                        <h5>${item.name}</h5>
+                        <span class="precio-fav">$${item.price.toLocaleString()}</span>
+                    </div>
+                    <button onclick="eliminar(${item.favId})" class="btn-del">❌</button>
+                  </div>
+              `;
+        }
+    } catch (e) {
+        console.error("Error leyendo item del carrito", e);
+    }
   });
   
   if(precioTotal) {
@@ -163,12 +179,15 @@ function eliminar(id) {
 const btnDeleteAll = document.getElementById('delete_all');
 if(btnDeleteAll){
     btnDeleteAll.addEventListener('click', () => {
+        // Borramos todo EXCEPTO la sesión del usuario
+        const esLogueado = localStorage.getItem('usuarioLogueado');
         localStorage.clear();
+        if(esLogueado) localStorage.setItem('usuarioLogueado', esLogueado);
+        
         renderFavourites();
     });
 }
 
-// INICIALIZACIÓN
 document.addEventListener("DOMContentLoaded", () => {
     loadProducts();
     renderFavourites();
