@@ -2,10 +2,14 @@
 // NOTA IMPORTANTE: Asegúrate de que los nombres de archivo en tu carpeta 
 // sean EXACTAMENTE iguales (mayúsculas, espacios y extensión .jpg/.png)
 
+const isPagesFolder = window.location.pathname.includes('/pages/');
+const pathPrefix = isPagesFolder ? '../' : '';
+
 let productos = [
   {
     "id": 1,
-    "image": "media/imagenes/Cargador Samsung 45w.jpeg", 
+    // Concatenamos el prefijo (../) a la ruta
+    "image": pathPrefix + "media/imagenes/Cargador Samsung 45w.jpeg",
     "name": "Cargador Samsung 45w ORIGINAL",
     "price": 45000,
     "category": "Cargadores",
@@ -13,7 +17,7 @@ let productos = [
   },
   {
     "id": 2,
-    "image": "media/imagenes/Cargador Motorola 68w ORIGINAL.png", 
+    "image": pathPrefix + "media/imagenes/Cargador Motorola 68w ORIGINAL.png",
     "name": "Cargador Motorola 68w ORIGINAL",
     "price": 55000,
     "category": "Cargadores",
@@ -21,7 +25,7 @@ let productos = [
   },
   {
     "id": 3,
-    "image": "media/imagenes/Fundas.png",
+    "image": pathPrefix + "media/imagenes/Fundas.png",
     "name": "Fundas para tu celular",
     "price": 15000,
     "category": "Fundas",
@@ -29,7 +33,7 @@ let productos = [
   },
   {
     "id": 4,
-    "image": "media/imagenes/Templados 9D.png",
+    "image": pathPrefix + "media/imagenes/Templados 9D.png",
     "name": "Vidrio Templado 9D",
     "price": 5000,
     "category": "Vidrios Templados",
@@ -37,7 +41,7 @@ let productos = [
   },
   {
     "id": 5,
-    "image": "media/imagenes/Cables USB Samsung y Motorola.png",
+    "image": pathPrefix + "media/imagenes/Cables USB Samsung y Motorola.png",
     "name": "Cable USB Tipo-C",
     "price": 8000,
     "category": "Cables USB",
@@ -45,7 +49,7 @@ let productos = [
   },
   {
     "id": 6,
-    "image": "media/imagenes/Auriculares Samsung -Manos Libres.png",
+    "image": pathPrefix + "media/imagenes/Auriculares Samsung -Manos Libres.png",
     "name": "Auriculares Samsung",
     "price": 12000,
     "category": "Auriculares",
@@ -53,7 +57,7 @@ let productos = [
   },
   {
     "id": 7,
-    "image": "media/imagenes/PowerBank.jpg", 
+    "image": pathPrefix + "media/imagenes/PowerBank.jpg",
     "name": "Power Bank",
     "price": 30000,
     "category": "Baterias",
