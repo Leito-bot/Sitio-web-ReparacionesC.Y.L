@@ -1,101 +1,139 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="css/styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💻Reparaciones C.Y.L</title>
-    
-    <script>
-    // Evita redirigir si ya se inició sesión correctamente
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💻 Reparaciones C.Y.L</title>
+
+  <!-- Tipografías y estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Redirección a login si no está logueado (mantengo tu lógica) -->
+  <script>
     const isLogged = localStorage.getItem('usuarioLogueado');
-
-    // Solo redirige si NO existe la clave y además NO vienes de una página interna
     if (!isLogged) {
-        const fromInternalPage = document.referrer.includes('Pre-entrega');
-
-        if (!fromInternalPage) {
-            window.location.href = "./pages/login.html";
-        }
+      const fromInternalPage = document.referrer.includes('Pre-entrega');
+      if (!fromInternalPage) {
+        window.location.href = "./pages/login.html";
+      }
     }
-    </script>
-
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css">
+  </script>
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <a href="index.html">
-                <img class="logo-img" src="/media/imagenes/Logo.png" alt="Logo Reparaciones C.Y.L">
-            </a>
-        </div>
-    </header>
-    <nav class="menu-header">
-        <ul class="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="pages/productos.html">Productos</a></li>
-            <li><a href="pages/noticias.html">Noticias</a></li>
-            <li><a href="#" onclick="cerrarSesion()">Salir 🚪</a></li>
-        </ul>
-    </nav>
+  <!-- HEADER con logo -->
+  <header>
+    <div class="logo-container">
+      <a href="index.html">
+        <img class="logo-img" src="media/imagenes/Logo.png" alt="Logo Reparaciones C.Y.L">
+      </a>
+    </div>
+  </header>
 
-    <div class="icononews">
-        <a href="pages/noticias.html" title="Ver Noticias">
-            <img id="icono-noticias" src="media/imagenes/periodico.png" alt="Noticias">
-        </a>
+  <!-- NAV pegajoso -->
+  <nav class="menu-header">
+    <ul class="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="pages/sobre-nosotros.html">Sobre nosotros</a></li>
+      <li><a href="pages/centro-ayuda.html">Centro de ayuda</a></li>
+      <li><a href="#" onclick="cerrarSesion()">Salir 🚪</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO principal (sección grande arriba) -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>Reparaciones y Soluciones Tecnológicas</h1>
+        <p class="lead">Servicio técnico profesional, instalación de redes, mantenimiento y soporte para empresas y particulares.</p>
+        <div class="hero-cta">
+          <a class="btn-primary" href="pages/centro-ayuda.html">Solicitar asistencia</a>
+          <a class="btn-outline" href="pages/sobre-nosotros.html">Conocé más</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="media/imagenes/hero-equipo.png" alt="Equipo técnico" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: Servicios (tarjetas simples, sin productos) -->
+  <main>
+    <section id="services" class="container services">
+      <h2>Servicios</h2>
+      <p class="parrafos">Ofrecemos una gama completa de servicios pensados para empresas y usuarios domésticos.</p>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <img src="media/imagenes/icon-network.png" alt="Redes" class="service-icon">
+          <h3>Instalación de redes</h3>
+          <p>Diseño, cableado estructurado y optimización de redes LAN/Wi‑Fi para entornos empresariales.</p>
+        </article>
+
+        <article class="service-card">
+          <img src="media/imagenes/icon-repair.png" alt="Reparaciones" class="service-icon">
+          <h3>Reparaciones y mantenimiento</h3>
+          <p>Diagnóstico y reparación de equipos, reemplazo de componentes y mantenimiento preventivo.</p>
+        </article>
+
+        <article class="service-card">
+          <img src="media/imagenes/icon-fiber.png" alt="Fibra" class="service-icon">
+          <h3>Fibra óptica y enlaces</h3>
+          <p>Instalación y terminación de enlaces de fibra para conexiones estables y de alta velocidad.</p>
+        </article>
+
+        <article class="service-card">
+          <img src="media/imagenes/icon-cloud.png" alt="Soporte" class="service-icon">
+          <h3>Soporte y soluciones en la nube</h3>
+          <p>Configuración de backups, migración a la nube y administración de servidores.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ICONO NOTICIAS FLOTANTE -->
+  <div class="icononews">
+    <a href="pages/noticias.html" title="Ver Noticias">
+      <img id="icono-noticias" src="media/imagenes/periodico.png" alt="Noticias">
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Contactos</h3>
+        <ul>
+          <li><a href="http://wa.me/+541134133665" target="_blank"><i class="fi fi-brands-whatsapp"></i> Whatsapp</a></li>
+          <li><a href="mailto:reparacionescyl828@gmail.com" target="_blank"><i class="fi fi-rr-envelope"></i> Correo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Empresa</h3>
+        <ul>
+          <li><a href="pages/sobre-nosotros.html">Sobre nosotros</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Servicio al cliente</h3>
+        <ul>
+          <li><a href="pages/centro-ayuda.html">Centro de ayuda</a></li>
+          <li><a href="pages/terminos.html">Términos y condiciones</a></li>
+        </ul>
+      </div>
     </div>
 
-    <main>
-        <section class="productos-destacados">
-            <h2><span class="hot">Accesorios Destacados</span></h2>
-            <div id="productos-container" class="productos-grid">
-               </div>
-        </section>
-    </main>
+    <p class="copyright">© 2026 Reparaciones C.y.L - Todos los derechos reservados</p>
+  </footer>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>Contactos</h3>
-                <ul>
-                    <li>
-                        <a href="http://wa.me/+541134133665" target="_blank" title="Whatsapp">
-                            <i class="fi fi-brands-whatsapp"></i> Whatsapp
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailto:reparacionescyl828@gmail.com" target="_blank">
-                            <i class="fi fi-rr-envelope"></i> Correo
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Empresa</h3>
-                <ul>
-                    <li><a href="pages/sobre-nosotros.html">Sobre nosotros</a></li>
-                    <li><a href="pages/sucursales.html">Sucursales</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Servicio al cliente</h3>
-                <ul>
-                    <li><a href="pages/centro-ayuda.html">Centro de ayuda</a></li>
-                    <li><a href="pages/terminos.html">Términos y condiciones</a></li>
-                </ul>
-            </div>
-        </div>
-        <p class="copyright">© 2025 Reparaciones C.Y.L - Todos los derechos reservados</p>
-    </footer>
-
-    <script src="js/productos.js"></script>
-
-    <script>
-        function cerrarSesion() {
-            localStorage.removeItem('usuarioLogueado');
-            window.location.href = "./pages/login.html";
-        }
-    </script>
+  <!-- Scripts -->
+  <script>
+    function cerrarSesion() {
+      localStorage.removeItem('usuarioLogueado');
+      window.location.href = "./pages/login.html";
+    }
+  </script>
 </body>
 </html>
