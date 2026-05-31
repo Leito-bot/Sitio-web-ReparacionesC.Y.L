@@ -8,17 +8,7 @@
   <!-- Tipografías y estilos -->
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-
-  <!-- Redirección a login si no está logueado (mantengo tu lógica) -->
-  <script>
-    const isLogged = localStorage.getItem('usuarioLogueado');
-    if (!isLogged) {
-      const fromInternalPage = document.referrer.includes('Pre-entrega');
-      if (!fromInternalPage) {
-        window.location.href = "./pages/login.html";
-      }
-    }
-  </script>
+  
 </head>
 <body>
   <!-- HEADER con logo -->
@@ -36,7 +26,7 @@
       <li><a href="index.html">Inicio</a></li>
       <li><a href="pages/sobre-nosotros.html">Sobre nosotros</a></li>
       <li><a href="pages/centro-ayuda.html">Centro de ayuda</a></li>
-      <li><a href="#" onclick="cerrarSesion()">Salir 🚪</a></li>
+      <li><a href="pages/contacto.html">Contacto</a></li>
     </ul>
   </nav>
 
@@ -113,6 +103,7 @@
         <h3>Empresa</h3>
         <ul>
           <li><a href="pages/sobre-nosotros.html">Sobre nosotros</a></li>
+          <li><a href="pages/terminos.html">Términos y condiciones</a></li>
         </ul>
       </div>
 
@@ -120,20 +111,10 @@
         <h3>Servicio al cliente</h3>
         <ul>
           <li><a href="pages/centro-ayuda.html">Centro de ayuda</a></li>
-          <li><a href="pages/terminos.html">Términos y condiciones</a></li>
         </ul>
       </div>
-    </div>
-
-    <p class="copyright">© 2026 Reparaciones C.y.L - Todos los derechos reservados</p>
+    </div><br><br>
+    <p class="copyright">© 2020-2026 Reparaciones C.y.L - Todos los derechos reservados</p>
   </footer>
-
-  <!-- Scripts -->
-  <script>
-    function cerrarSesion() {
-      localStorage.removeItem('usuarioLogueado');
-      window.location.href = "./pages/login.html";
-    }
-  </script>
 </body>
 </html>

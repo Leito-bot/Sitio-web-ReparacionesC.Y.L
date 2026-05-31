@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css">
 </head>
 <body>
-    
   <header>
         <div class="logo-container">
             <a href="../index.html">
@@ -21,14 +20,13 @@
             <li><a href="../index.html">Inicio</a></li>
             <li><a href="../pages/productos.html">Productos</a></li>
             <li><a href="../pages/noticias.html">Noticias</a></li>
-            <li><a href="#" onclick="cerrarSesion()">Salir 🚪</a></li>
         </ul>
     </nav>
     <main>
         <section class="form-section" style="max-width: 600px; margin: 40px auto; padding: 20px;">
             <h1 style="text-align: center; color: var(--primary-color);">Comunicate con nosotros</h1>
             
-            <form action="https://formspree.io/f/xandvgrk" method="POST" class="formulario-contacto">
+            <form id="formContacto" class="formulario-contacto">
                 <fieldset class="fieldset">
                     <legend class="titulo-campos">Información Personal</legend>
                     
@@ -65,6 +63,9 @@
                 <div style="text-align: center; margin-top: 20px;">
                     <button type="submit" class="form-enviar">Enviar Mensaje</button>
                 </div>
+
+                <p id="respuesta"></p>
+
             </form>
         </section>
     </main>
@@ -103,5 +104,8 @@
         </div>
         <p class="copyright">© 2025 Reparaciones C.Y.L - Todos los derechos reservados</p>
     </footer>
+
+    <script src="../js/contacto.js"></script>
+    
 </body>
 </html>

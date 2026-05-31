@@ -185,7 +185,8 @@ header{
 }
 .footer-col a{ color:#e6f7f3; text-decoration:none }
 .footer-col a:hover{ color:var(--accent) }
-copyright{
+
+.copyright{
   text-align:center;
 }
 
