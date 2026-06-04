@@ -1,4 +1,15 @@
-const enviarContacto = (req, res) => {
+const nodemailer = require('nodemailer');
+const fs = require('fs');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
+
+const enviarContacto = async (req, res) => {
 
     const { nombre, edad, email, mensaje } = req.body;
 
@@ -34,6 +45,24 @@ const enviarContacto = (req, res) => {
     console.log('Edad:', edad);
     console.log('Email:', email);
     console.log('Mensaje:', mensaje);
+
+    const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
+        subject: 'Nuevo mensaje desde la web',
+        text: `
+    Nombre: ${nombre}
+    Edad: ${edad}
+    Email: ${email}
+
+    Mensaje:
+    ${mensaje}
+    `
+    };
+
+    console.log("Intentando enviar correo...");
+    await transporter.sendMail(mailOptions);
+    console.log("Correo enviado correctamente");
 
     return res.json({
         success: true,
