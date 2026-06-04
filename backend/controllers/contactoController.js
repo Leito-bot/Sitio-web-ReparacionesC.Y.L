@@ -1,13 +1,18 @@
-const nodemailer = require('nodemailer');
 const fs = require('fs');
+const path = require('path');
 
-const transporter = nodemailer.createTransport({
+const archivoMensajes = path.join(
+    __dirname,
+    '../data/mensajes.json'
+);
+
+/*const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     }
-});
+});*/
 
 const enviarContacto = async (req, res) => {
 
@@ -46,7 +51,33 @@ const enviarContacto = async (req, res) => {
     console.log('Email:', email);
     console.log('Mensaje:', mensaje);
 
-    const mailOptions = {
+    const mensajesGuardados = JSON.parse(
+        fs.readFileSync(
+            archivoMensajes,
+            'utf8'
+        )
+    );
+
+    const nuevoMensaje = {
+        fecha: new Date().toLocaleString(),
+        nombre,
+        edad,
+        email,
+        mensaje
+    };
+
+    mensajesGuardados.push(nuevoMensaje);
+
+    fs.writeFileSync(
+        archivoMensajes,
+        JSON.stringify(
+            mensajesGuardados,
+            null,
+            2
+        )
+    );
+
+    /*const mailOptions = {
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
         subject: 'Nuevo mensaje desde la web',
@@ -58,7 +89,7 @@ const enviarContacto = async (req, res) => {
     Mensaje:
     ${mensaje}
     `
-    };
+    };*/
 
     //console.log("Intentando enviar correo...");
     //await transporter.sendMail(mailOptions);
