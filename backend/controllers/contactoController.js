@@ -60,9 +60,9 @@ const enviarContacto = async (req, res) => {
     `
     };
 
-    console.log("Intentando enviar correo...");
-    await transporter.sendMail(mailOptions);
-    console.log("Correo enviado correctamente");
+    //console.log("Intentando enviar correo...");
+    //await transporter.sendMail(mailOptions);
+    //console.log("Correo enviado correctamente");
 
     return res.json({
         success: true,
