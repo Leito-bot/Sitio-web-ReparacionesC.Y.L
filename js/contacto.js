@@ -12,7 +12,7 @@ formulario.addEventListener('submit', async (event) => {
     try {
 
         const respuesta = await fetch(
-            'https://reparacionescyl-backend.onrender.com/api/contacto',
+            'http://localhost:3000/api/contacto',
             {
                 method: 'POST',
 

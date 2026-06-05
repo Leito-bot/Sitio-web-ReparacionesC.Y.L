@@ -1,11 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-
-const archivoMensajes = path.join(
-    __dirname,
-    '../data/mensajes.json'
-);
-
+const db = require('../database/db');
 
 const enviarContacto = async (req, res) => {
 
@@ -44,46 +37,73 @@ const enviarContacto = async (req, res) => {
     console.log('Email:', email);
     console.log('Mensaje:', mensaje);
 
-    console.log("Ruta del archivo:", archivoMensajes);
-    console.log("Leyendo mensajes.json...");
 
-    const mensajesGuardados = JSON.parse(
-        fs.readFileSync(
-            archivoMensajes,
-            'utf8'
+    db.run(
+        `
+        INSERT INTO mensajes
+        (
+            fecha,
+            nombre,
+            edad,
+            email,
+            mensaje
         )
+        VALUES (?, ?, ?, ?, ?)
+        `,
+        [
+            new Date().toLocaleString(),
+            nombre,
+            edad,
+            email,
+            mensaje
+        ],
+        function (err) {
+
+            if (err) {
+
+                console.error(err);
+
+                return res.status(500).json({
+                    success: false,
+                    message: 'Error al guardar mensaje'
+                });
+
+            }
+
+            return res.json({
+                success: true,
+                message: 'Formulario recibido correctamente'
+            });
+
+        }
     );
 
-    const nuevoMensaje = {
-        fecha: new Date().toLocaleString(),
-        nombre,
-        edad,
-        email,
-        mensaje
-    };
+};
 
-    mensajesGuardados.push(nuevoMensaje);
+const obtenerMensajes = (req, res) => {
 
-    console.log("Cantidad de mensajes:", mensajesGuardados.length);
+    db.all(
+        'SELECT * FROM mensajes ORDER BY id DESC',
+        [],
+        (err, rows) => {
 
-    fs.writeFileSync(
-        archivoMensajes,
-        JSON.stringify(
-            mensajesGuardados,
-            null,
-            2
-        )
+            if (err) {
+
+                return res.status(500).json({
+                    success: false,
+                    message: 'Error al obtener mensajes'
+                });
+
+            }
+
+            return res.json(rows);
+
+        }
     );
-
-    console.log("Archivo guardado correctamente");
-
-    return res.json({
-        success: true,
-        message: 'Formulario recibido correctamente'
-    });
 
 };
 
 module.exports = {
-    enviarContacto
+    enviarContacto,
+    obtenerMensajes
 };
