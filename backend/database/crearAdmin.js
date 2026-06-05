@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt'); //Importamos Bcrypt
+const bcrypt = require('bcrypt');
 const db = require('./db');
 
 async function crearAdmin() {

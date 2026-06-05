@@ -7,7 +7,14 @@ const {
     obtenerMensajes
 } = require('../controllers/contactoController');
 
+const verificarToken =
+    require('../middleware/authMiddleware');
+
 router.post('/contacto', enviarContacto);
-router.get('/mensajes', obtenerMensajes);
+router.get(
+    '/mensajes',
+    verificarToken,
+    obtenerMensajes
+);
 
 module.exports = router;

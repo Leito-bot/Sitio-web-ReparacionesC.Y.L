@@ -1,5 +1,6 @@
 const db = require('../database/db');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const login = async (req, res) => {
 
@@ -42,9 +43,21 @@ const login = async (req, res) => {
                 });
             }
 
+            const token = jwt.sign(
+                {
+                    id: row.id,
+                    usuario: row.usuario
+                },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: '1h'
+                }
+            );
+
             return res.json({
                 success: true,
-                message: 'Login correcto'
+                message: 'Login correcto',
+                token
             });
 
         }

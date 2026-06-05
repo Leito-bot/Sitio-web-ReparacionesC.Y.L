@@ -23,7 +23,7 @@ formulario.addEventListener(
 
             const respuesta =
                 await fetch(
-                    'http://localhost:3000/api/login',
+                    'https://reparacionescyl-backend.onrender.com/api/login',
                     {
                         method: 'POST',
 
@@ -49,8 +49,8 @@ formulario.addEventListener(
             if (datos.success) {
 
                 localStorage.setItem(
-                    'logueado',
-                    'true'
+                    'token',
+                    datos.token
                 );
 
                 window.location.href =

@@ -1,8 +1,9 @@
-if (
+const token =
     localStorage.getItem(
-        'logueado'
-    ) !== 'true'
-) {
+        'token'
+    );
+
+if (!token) {
 
     window.location.href =
         'login.html';
@@ -15,7 +16,13 @@ async function cargarMensajes() {
 
         const respuesta =
             await fetch(
-                'http://localhost:3000/api/mensajes'
+                'https://reparacionescyl-backend.onrender.com/api/mensajes',
+                {
+                    headers: {
+                        Authorization:
+                            `Bearer ${token}`
+                    }
+                }
             );
 
         const mensajes =
@@ -61,7 +68,7 @@ if (botonCerrarSesion) {
         () => {
 
             localStorage.removeItem(
-                'logueado'
+                'token'
             );
 
             window.location.href =
