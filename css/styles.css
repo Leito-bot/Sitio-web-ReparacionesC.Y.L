@@ -140,6 +140,12 @@ header{
 }
 .service-icon{ width:72px; height:72px; object-fit:contain; margin:0 auto }
 
+.img-serv{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
 /* Títulos y textos */
 .service-card h3{ color:var(--primary); font-size:1.05rem }
 .service-card p{ color:var(--muted); font-size:0.95rem; margin-top:auto }
