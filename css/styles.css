@@ -33,13 +33,85 @@ body{
 }
 
 /* ===== Header ===== */
-header{
-  background:var(--white);
-  padding:12px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+.header {
+    width: 100%;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    background: white;
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,0.08);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 .logo-container{ text-align:center }
-.logo-img{ max-width:220px; height:auto; display:inline-block }
+.logo img {
+    width: 170px;
+}
+
+.nav {
+
+    display: flex;
+    align-items: center;
+    gap: 35px;
+
+}
+
+
+.nav a {
+
+    text-decoration: none;
+
+    color: #111827;
+
+    font-weight: 600;
+
+    font-size: 15px;
+
+    transition: .3s;
+
+}
+
+
+.nav a:hover {
+
+    color: #2563eb;
+
+}
+
+
+
+/* botón contacto */
+
+.btn-contacto {
+
+    background:
+    #0b1c8c;
+
+    color:white !important;
+
+    padding:
+    12px 25px;
+
+    border-radius:
+    25px;
+
+}
+
+
+.btn-contacto:hover {
+
+    background:#2563eb;
+
+}
 
 /* ===== Menu pegajoso ===== */
 .menu-header{
