@@ -6,7 +6,7 @@ async function crearAdmin() {
     try {
 
         const hash = await bcrypt.hash(
-            '123456',
+            '123456789',
             10
         );
 
@@ -20,7 +20,7 @@ async function crearAdmin() {
             VALUES (?, ?)
             `,
             [
-                'admin',
+                'administrator',
                 hash
             ],
             function (err) {
