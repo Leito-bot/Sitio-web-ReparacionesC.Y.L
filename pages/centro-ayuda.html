@@ -1,104 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Ayuda - Reparaciones C.Y.L</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Centro de Ayuda - Reparaciones C.Y.L</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <header>
-        <div class="logo-container">
-            <a href="../index.html">
-                <img class="logo-img" src="../media/imagenes/Logo.png" alt="Logo Reparaciones C.Y.L">
-            </a>
-        </div>
-    </header>
-    <nav class="menu-header">
-        <ul class="menu">
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="../pages/productos.html">Productos</a></li>
-            <li><a href="../pages/noticias.html">Noticias</a></li>
-        </ul>
+  <header class="header">
+    <div class="logo">
+      <a href="../index.html">
+        <img src="../media/imagenes/Logo.png" alt="Reparaciones C.Y.L">
+      </a>
+    </div>
+    <nav class="nav">
+      <a href="../index.html">Inicio</a>
+      <a href="../index.html#services">Servicios</a>
+      <a href="../index.html#nosotros">Nosotros</a>
     </nav>
-    <main>
-        <section class="form-section" style="max-width: 600px; margin: 40px auto; padding: 20px;">
-            <h1 style="text-align: center; color: var(--primary-color);">Comunicate con nosotros</h1>
-            
-            <form id="formContacto" class="formulario-contacto">
-                <fieldset class="fieldset">
-                    <legend class="titulo-campos">Información Personal</legend>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required style="width: 100%; padding: 8px;">
-                    </div>
+  </header>
 
-                    <div style="margin-bottom: 15px;">
-                        <label for="edad">Edad:</label>
-                        <input type="number" id="edad" name="edad" placeholder="Edad" required style="width: 100%; padding: 8px;">
-                    </div>
+  <main>
+    <section class="page-container page-container--narrow">
+      <h1 style="text-align:center;">Comunicate con nosotros</h1>
 
-                    <div style="margin-bottom: 15px;">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="tu@email.com" required style="width: 100%; padding: 8px;">
-                    </div>
-                </fieldset>
+      <form id="formContacto" class="formulario-contacto">
+        <fieldset>
+          <legend>Información Personal</legend>
 
-                <fieldset class="fieldset">
-                    <legend class="titulo-campos">Motivo del Mensaje</legend>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <label for="mensaje">Mensaje:</label>
-                        <textarea id="mensaje" name="mensaje" required style="width: 100%; padding: 8px;" rows="5"></textarea>
-                    </div>
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+          </div>
 
-                    <div style="margin-bottom: 15px;">
-                        <label for="archivo">Adjuntar Archivo (Opcional):</label><br>
-                        <input type="file" id="archivo" name="archivo" style="margin-top: 5px;">
-                    </div>
-                </fieldset>
+          <div class="form-group">
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" placeholder="Edad" required>
+          </div>
 
-                <div style="text-align: center; margin-top: 20px;">
-                    <button type="submit" class="form-enviar">Enviar Mensaje</button>
-                </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+          </div>
+        </fieldset>
 
-                <p id="respuesta"></p>
+        <fieldset>
+          <legend>Motivo del Mensaje</legend>
 
-            </form>
-        </section>
-    </main>
+          <div class="form-group">
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" required rows="5"></textarea>
+          </div>
 
-    <footer class="footer">
-        <div class="footer-container">
-        <div class="footer-col">
-            <h3>Contactos</h3>
-            <ul>
-            <li><a href="http://wa.me/+541134133665" target="_blank"><i class="fi fi-brands-whatsapp"></i> Whatsapp</a></li>
-            <li><a href="mailto:reparacionescyl.tech@gmail.com" target="_blank"><i class="fi fi-rr-envelope"></i> Correo</a></li>
-            </ul>
+          <div class="form-group">
+            <label for="archivo">Adjuntar Archivo (Opcional):</label>
+            <input type="file" id="archivo" name="archivo">
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary form-enviar">Enviar Mensaje</button>
         </div>
 
-        <div class="footer-col">
-            <h3>Empresa</h3>
-            <ul>
-            <li><a href="pages/sobre-nosotros.html">Sobre nosotros</a></li>
-            <li><a href="pages/terminos.html">Términos y condiciones</a></li>
-            </ul>
-        </div>
+        <p id="respuesta"></p>
+      </form>
+    </section>
+  </main>
 
-        <div class="footer-col">
-            <h3>Servicio al cliente</h3>
-            <ul>
-            <li><a href="pages/centro-ayuda.html">Centro de ayuda</a></li>
-            </ul>
-        </div>
-        </div><br><br>
-        <p class="copyright">© 2020-2026 Reparaciones C.y.L - Todos los derechos reservados</p>
-    </footer>
+  <div class="icononews">
+    <a href="noticias.html" title="Ver Noticias">
+      <img id="icono-noticias" src="../media/imagenes/periodico.png" alt="Noticias">
+    </a>
+  </div>
 
-    <script src="../js/contacto.js"></script>
-    
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Contactos</h3>
+        <ul>
+          <li><a href="http://wa.me/+541134133665" target="_blank"><i class="fi fi-brands-whatsapp"></i> Whatsapp</a></li>
+          <li><a href="mailto:reparacionescyl.tech@gmail.com" target="_blank"><i class="fi fi-rr-envelope"></i> Correo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Empresa</h3>
+        <ul>
+          <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+          <li><a href="terminos.html">Términos y condiciones</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Servicio al cliente</h3>
+        <ul>
+          <li><a href="centro-ayuda.html">Centro de ayuda</a></li>
+        </ul>
+      </div>
+    </div><br><br>
+    <p class="copyright">© 2020-2026 Reparaciones C.y.L - Todos los derechos reservados</p>
+  </footer>
+
+  <script src="../js/contacto.js"></script>
 </body>
 </html>
