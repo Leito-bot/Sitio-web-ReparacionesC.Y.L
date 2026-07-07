@@ -1,10 +1,8 @@
 const db = require('../database/db');
-const transporter = require('../config/mailer');
 
 const enviarContacto = async (req, res) => {
 
     const { nombre, edad, email, mensaje } = req.body;
-    const archivo = req.file;
 
     if (!nombre) {
         return res.status(400).json({ success: false, message: 'El nombre es obligatorio' });
@@ -24,32 +22,12 @@ const enviarContacto = async (req, res) => {
         [new Date().toLocaleString(), nombre, edad, email, mensaje],
         function (err) {
             if (err) {
-                console.error('Error al guardar en la base de datos:', err);
+                console.error(err);
+                return res.status(500).json({ success: false, message: 'Error al guardar mensaje' });
             }
+            return res.json({ success: true, message: 'Formulario recibido correctamente' });
         }
     );
-
-    const mailOptions = {
-        from: `"Formulario Web - Reparaciones C.Y.L" <${process.env.EMAIL_USER}>`,
-        to: 'reparacionescyl.tech@gmail.com',
-        replyTo: email,
-        subject: `Nuevo mensaje de contacto de ${nombre}`,
-        text: `Nombre: ${nombre}\nEdad: ${edad}\nEmail: ${email}\n\nMensaje:\n${mensaje}`,
-        attachments: archivo
-            ? [{ filename: archivo.originalname, content: archivo.buffer }]
-            : []
-    };
-
-    try {
-        await transporter.sendMail(mailOptions);
-        return res.json({ success: true, message: 'Formulario recibido correctamente' });
-    } catch (error) {
-        console.error('Error al enviar el email:', error);
-        return res.status(500).json({
-            success: false,
-            message: 'El mensaje se guardó, pero hubo un error al enviar la notificación por email'
-        });
-    }
 };
 
 const obtenerMensajes = (req, res) => {

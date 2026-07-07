@@ -4,14 +4,18 @@ formulario.addEventListener('submit', async (event) => {
 
     event.preventDefault();
 
-    const datosFormulario = new FormData(formulario);
+    const nombre = document.getElementById('nombre').value;
+    const edad = document.getElementById('edad').value;
+    const email = document.getElementById('email').value;
+    const mensaje = document.getElementById('mensaje').value;
 
     try {
         const respuesta = await fetch(
             'https://reparacionescyl-backend.onrender.com/api/contacto',
             {
                 method: 'POST',
-                body: datosFormulario
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, edad, email, mensaje })
             }
         );
 
