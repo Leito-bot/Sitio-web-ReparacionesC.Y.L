@@ -3,6 +3,7 @@
    =========================== */
 :root{
   --primary: #040a7a;      /* color principal */
+  --secondary: #2563eb;    /* color secundario (usado en textos/links) */
   --accent: #00ffcc;       /* color acento */
   --bg: #f4f6f9;           /* fondo general */
   --dark: #222;            /* texto oscuro */
@@ -36,84 +37,42 @@ body{
 .header {
     width: 100%;
     height: 90px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 8%;
-
     background: white;
-
-    box-shadow:
-    0 4px 15px rgba(0,0,0,0.08);
-
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
-.logo-container{ text-align:center }
 .logo img {
     width: 170px;
 }
-
 .nav {
-
     display: flex;
     align-items: center;
     gap: 35px;
-
 }
-
-
 .nav a {
-
     text-decoration: none;
-
     color: #111827;
-
     font-weight: 600;
-
     font-size: 15px;
-
     transition: .3s;
-
 }
-
-
 .nav a:hover {
-
-    color: #2563eb;
-
+    color: var(--secondary);
 }
 
-
-
-/* botón contacto */
-
-.btn-contacto {
-
-    background:
-    #0b1c8c;
-
-    color:white !important;
-
-    padding:
-    12px 25px;
-
-    border-radius:
-    25px;
-
-}
-
-
-.btn-contacto:hover {
-
-    background:#2563eb;
-
-}
-
-/* ===== Menu pegajoso ===== */
+/* ===========================
+   HEADER VIEJO (usado todavía por
+   productos.html y sucursales.html
+   hasta que se rediseñen)
+=========================== */
+.logo-container{ text-align:center }
+.logo-img{ width:170px }
 .menu-header{
   background:var(--primary);
   position:sticky;
@@ -175,25 +134,18 @@ body{
   text-decoration:none;
   font-weight:700;
   box-shadow: 0 6px 18px rgba(4,10,122,0.08);
+  border:none;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:1rem;
 }
 .btn-primary:hover{ background:var(--accent); color:var(--primary) }
-
-.btn-outline{
-  background:transparent;
-  color:var(--primary);
-  padding:12px 18px;
-  border-radius:8px;
-  border:2px solid rgba(4,10,122,0.08);
-  text-decoration:none;
-  font-weight:700;
-}
 
 /* ===== Servicios ===== */
 .services{ padding:40px 0 }
 .services h2{ text-align:center; color:var(--primary); margin-bottom:8px }
 .services .parrafos{ text-align:center; color:var(--muted); margin-bottom:24px }
 
-/* Grid de servicios */
 .services-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -210,15 +162,12 @@ body{
   flex-direction:column;
   gap:12px;
 }
-.service-icon{ width:72px; height:72px; object-fit:contain; margin:0 auto }
-
 .img-serv{
   width: 100%;
   height: 200px;
   object-fit: cover;
+  border-radius:8px;
 }
-
-/* Títulos y textos */
 .service-card h3{ color:var(--primary); font-size:1.05rem }
 .service-card p{ color:var(--muted); font-size:0.95rem; margin-top:auto }
 
@@ -228,56 +177,58 @@ body{
   left:20px;
   bottom:20px;
   z-index:999;
-  background:#03DFFC;
+  background:var(--secondary);
   width:60px;
   height:60px;
   border-radius:50%;
   display:flex;
   justify-content:center;
   align-items:center;
-  box-shadow:0 6px 18px rgba(0,0,0,0.2);
+  box-shadow:var(--shadow);
 }
-.icononews img{ width:30px; height:30px; filter:invert(1) }
+.icononews img{ width:28px; height:28px; filter:invert(1) }
 
 /* ===========================
-   ICONO NOTICIAS FLOTANTE
+   PAGINAS INTERNAS
+   (usado por centro-ayuda, noticias,
+   terminos, sobre-nosotros, etc.)
 =========================== */
-
-.icononews {
-    position:fixed;
-    left:20px;
-    bottom:20px;
-    z-index:999;
-    background:var(--secondary);
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    box-shadow:var(--shadow);
+.page-container{
+  max-width:var(--max-width);
+  margin:50px auto;
+  padding:40px;
+  background:white;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
 }
-
-.icononews img {
-    width:28px;
-    height:28px;
-    filter:invert(1);
+.page-container--narrow{
+  max-width:700px;
 }
-
+.page-container h1{
+  color:var(--primary);
+  margin-bottom:25px;
+}
+.page-container h2{
+  color:var(--secondary);
+  margin:25px 0 15px;
+}
+.page-container p{
+  line-height:1.8;
+  margin-bottom:20px;
+}
+.page-container ul{
+  margin-left:25px;
+  line-height:2;
+  margin-bottom:20px;
+}
 
 /* ===========================
    FORMULARIO DE CONTACTO
 =========================== */
-
-.page-container--narrow {
-    max-width:700px;
-}
-
 .formulario-contacto fieldset {
     border:none;
     margin-bottom:25px;
 }
-
 .formulario-contacto legend {
     font-size:1.05rem;
     font-weight:600;
@@ -287,18 +238,15 @@ body{
     width:100%;
     border-bottom:2px solid var(--accent);
 }
-
 .form-group {
     margin-bottom:18px;
 }
-
 .form-group label {
     display:block;
     margin-bottom:6px;
     font-weight:600;
     color:var(--dark);
 }
-
 .form-group input,
 .form-group textarea {
     width:100%;
@@ -308,18 +256,15 @@ body{
     font-family:inherit;
     font-size:1rem;
 }
-
 .form-group input:focus,
 .form-group textarea:focus {
     outline:none;
     border-color:var(--secondary);
 }
-
 .form-actions {
     text-align:center;
     margin-top:10px;
 }
-
 #respuesta {
     text-align:center;
     margin-top:15px;
@@ -329,7 +274,6 @@ body{
 /* ===========================
    TARJETAS DE NOTICIAS
 =========================== */
-
 .news-card {
     background:white;
     padding:25px;
@@ -337,23 +281,19 @@ body{
     box-shadow:var(--shadow);
     margin-bottom:25px;
 }
-
 .news-card:last-child {
     margin-bottom:0;
 }
-
 .news-card h2 {
     color:var(--primary);
     font-size:1.4rem;
     margin-bottom:8px;
 }
-
 .news-date {
     color:var(--muted);
     font-size:0.9rem;
     margin-bottom:12px;
 }
-
 .news-card p {
     line-height:1.7;
 }
@@ -389,216 +329,12 @@ body{
 
 /* ===== Responsive ===== */
 @media (max-width:900px){
+  .header{ flex-direction:column; height:auto; gap:15px; padding:15px; }
+  .nav{ gap:14px; flex-wrap:wrap; justify-content:center; font-size:0.9rem }
   .hero-inner{ flex-direction:column-reverse; align-items:center }
   .hero-image{ width:100% }
   .menu{ gap:14px; font-size:0.9rem }
   .logo-img{ max-width:180px }
-}
-
-/* =================================
-   PAGINAS INTERNAS
-================================= */
-
-.page{
-
-    max-width:1200px;
-    margin:50px auto;
-    padding:40px 25px;
-
-}
-
-
-.page-card{
-
-    background:white;
-
-    border-radius:15px;
-
-    padding:40px;
-
-    box-shadow:
-    0 8px 24px rgba(0,0,0,.08);
-
-}
-
-
-
-.page-card h1{
-
-    color:var(--primary);
-
-    font-size:2.3rem;
-
-    margin-bottom:20px;
-
-}
-
-
-
-.page-card h2{
-
-    color:#2563eb;
-
-    margin-top:30px;
-
-    margin-bottom:15px;
-
-}
-
-
-
-.page-card p{
-
-    color:var(--muted);
-
-    line-height:1.8;
-
-    font-size:1.05rem;
-
-}
-
-
-
-.page-card ul{
-
-    margin:20px;
-
-}
-
-
-
-.page-card li{
-
-    margin-bottom:10px;
-
-}
-
-
-
-/* Noticias */
-
-
-.news-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(250px,1fr));
-
-    gap:25px;
-
-    margin-top:30px;
-
-}
-
-
-
-.news-card{
-
-    background:#fff;
-
-    border-radius:15px;
-
-    padding:25px;
-
-    box-shadow:var(--shadow);
-
-}
-
-
-
-.news-card h3{
-
-    color:var(--primary);
-
-    margin-bottom:10px;
-
-}
-
-
-
-/* contacto / ayuda */
-
-
-.contact-box{
-
-    margin-top:25px;
-
-    padding:25px;
-
-    background:#eef6ff;
-
-    border-radius:12px;
-
-}
-
-
-
-.contact-box a{
-
-    color:var(--primary);
-
-    font-weight:bold;
-
-}
-
-
-
-/* Tablas */
-
-.table-container{
-
-    overflow-x:auto;
-
-}
-
-
-
-table{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-}
-
-
-th{
-
-    background:var(--primary);
-
-    color:white;
-
-    padding:12px;
-
-}
-
-
-td{
-
-    padding:12px;
-
-    border-bottom:1px solid #ddd;
-
-}
-
-
-/* Responsive */
-
-@media(max-width:700px){
-
-
-.page-card{
-
-    padding:25px;
-
-}
-
-
-.page-card h1{
-
-    font-size:1.8rem;
-
-}
-
+  .footer-container{ flex-direction:column; text-align:center; align-items:center }
+  .page-container{ margin:20px; padding:25px }
 }
